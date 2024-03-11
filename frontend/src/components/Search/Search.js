@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import classes from './search.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
+// for searching foods using a set term
 
 
 export default function Search() {
