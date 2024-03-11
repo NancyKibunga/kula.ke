@@ -89,5 +89,23 @@ export const sample_foods = [
     }
   ];
   
+  export const sample_tags = [
+      { name: 'All', count: 8 },
+      { name: 'FastFood', count: 4 },
+      { name: 'Pizza', count: 2 },
+      { name: 'Lunch', count: 5 },
+      { name: 'Seafood', count: 2 },
+      { name: 'Healthy', count: 3 },
+      { name: 'Burger', count: 1 },
+      { name: 'Salad', count: 1 },
+      { name: 'Italian', count: 1 },
+      { name: 'Asian Fusion', count: 1 },
+      { name: 'Pizzeria', count: 1 },
+      { name: 'Sushi Bar', count: 1 },
+    ];
+    
+
+
+  
  
   
