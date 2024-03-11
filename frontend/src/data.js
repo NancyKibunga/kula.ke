@@ -28,7 +28,7 @@ export const sample_foods = [
       price: 18,
       favorite: false,
       vendor: ['Seafood Grill'],
-      stars: 4.4,
+      stars: 5,
       imageUrl: 'grilled-salmon.jpeg',
       tags: ['Seafood', 'Healthy', 'Dinner']
     },
