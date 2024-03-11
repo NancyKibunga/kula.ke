@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+/* select all tags */
+* {
+  box-sizing: border-box;
+}
+/* set the dont size for the rem unit that we will be using in the project*/
+html {
+  font-size: 18px;
+}
+
+body {
+  margin: 0;
+  font-family: Quicksand, sans-serif;
+}
+/* to remove underline format on links*/
+a {
+  text-decoration: none;
+}
