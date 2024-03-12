@@ -14,11 +14,13 @@
     padding: 1.2rem;
     font-size: 1rem;
     font-weight: 500;
+    color: #1b7c10;
+    opacity: 0.5;
     outline: none;
   }
   
   .container button {
-    color: grey;
+    color: rgb(9, 63, 11);
     height: 3rem;
     width: 5rem;
     font-size: 1rem;

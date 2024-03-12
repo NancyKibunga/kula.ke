@@ -1,0 +1,105 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 2rem;
+  }
+  
+  .container > * {
+    min-width: 25rem;
+    max-width: 40rem;
+  }
+  
+  .image {
+    border-radius: 3rem;
+    flex: 1 0;
+    object-fit: cover;
+    height: 35rem;
+    margin: 1rem;
+  }
+  
+  .details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0;
+    border-radius: 3rem;
+    padding: 2rem;
+    color: rgb(19, 44, 10);
+    margin-left: 1rem;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .name {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #658b62;
+  }
+  
+  .favorite {
+    color: #e72929;
+    font-size: 2.5rem;
+  }
+  
+  .favorite.not {
+    color: grey;
+  }
+  
+  .vendors {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0.7rem 0;
+    color: #122511;
+  }
+  
+  .vendors > span {
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin: 0.5rem 0.5rem 0 0;
+    border-radius: 0.9rem;
+    background-color:#f0f0f0;
+  }
+  
+  .cook_time {
+    margin-top: 1rem;
+    color: #122511;
+  }
+  
+  .cook_time span {
+    padding: 0.6rem 2rem 0.6rem 0;
+    border-radius: 10rem;
+    font-size: 1.3rem;
+    color: #122511;
+  }
+  
+  .price {
+    font-size: 1.5rem;
+    margin: 2rem 2rem 2rem 0;
+    color: green;
+  }
+  
+  .price::before {
+    content: 'Price: ';
+    color: rgb(118, 134, 124);
+  }
+  
+  .container button {
+    color: white;
+    background-color: #658b62;
+    border: none;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border-radius: 10rem;
+    outline: none;
+  }
+  
+  .container button:hover {
+    background-color: rgb(102, 57, 39);
+    opacity: 0.9;
+    cursor: pointer;
+  }
