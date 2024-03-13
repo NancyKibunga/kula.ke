@@ -4,6 +4,7 @@ import { useCart } from '../../hooks/useCart';
 import Title from '../../components/Title/Title';
 import { Link } from 'react-router-dom';
 import Price from '../../components/Price/Price';
+import NotFound from '../../components/NotFound/NotFound';
 
 export default function CartPage() {
     const{ cart, removeFromCart, changeQuantity } = useCart();
@@ -11,9 +12,9 @@ export default function CartPage() {
   
   <>
   {/* display the cart page title */}
-  <Title title="Cart Page" margin="1.5rem 0 0 2.5rem"/>
+  <Title title="Cart Items" margin="1.5rem 0 0 2.5rem"/>
     {/* checks and display the cart page contents */}
-  {cart && cart.items.length > 0 && (
+  {cart.items.length === 0? (<NotFound message = "Your Cart 🛒 is Empty"/>) : (
     <div className={classes.container}>
         <ul className={classes.list}>
             {/* shows all cart items */}

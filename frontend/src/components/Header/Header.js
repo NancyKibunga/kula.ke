@@ -36,7 +36,7 @@ import { useCart } from '../../hooks/useCart';
  
              <li>
                <Link to="/cart">
-                 Cart
+                 Cart 🛒
                  {cart.totalCount > 0 && 
                    <span className={classes.cart_count}>{cart.totalCount}</span>
                  }
