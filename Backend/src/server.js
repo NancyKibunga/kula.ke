@@ -6,12 +6,14 @@ import foodRouter from './routers/food.router.js';
 const app = express();
 
 // using the cors package that receives requests from localhost 3000 only
-app.use(cors
+app.use(
+    cors
     ({
         credentials:true,
-        origin: ['https://localhost:3000'],
+        origin: ['http://localhost:3000'],
     })
     );
+    
 // the address for the foodrouter
     app.use('/api/foods', foodRouter);
 

@@ -21,7 +21,7 @@ export const getAllTags = async () => {
 };
 
 export const getAllByTag = async tag => {
-    if(tag=== 'All') return getAll(); 
+    if(tag === 'All') return getAll(); 
    const { data } = await axios.get('/api/foods/tag/' +tag);
    return data;  
 };
