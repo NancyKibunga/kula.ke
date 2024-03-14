@@ -104,7 +104,50 @@ export const sample_foods = [
       { name: 'Sushi Bar', count: 1 },
     ];
     
-
+    
+    export const sample_users = [
+      {
+        id: '1',
+        name: 'Berry Masher',
+        email: 'test1@gmail.com',
+        password: '10nasdfsd',
+        address: 'Nairobi',
+        isadmin: false,
+      },
+      {
+        id: '2',
+        name: 'John Doe',
+        email: 'john.doe@example.com',
+        password: 'qwerty123',
+        address: 'New York',
+        isadmin: true,
+      },
+      {
+        id: '3',
+        name: 'Alice Smith',
+        email: 'alice.smith@example.com',
+        password: 'password123',
+        address: 'London',
+        isadmin: false,
+      },
+      {
+        id: '4',
+        name: 'Emma Johnson',
+        email: 'emma.johnson@example.com',
+        password: 'securepass',
+        address: 'Sydney',
+        isadmin: false,
+      },
+      {
+        id: '5',
+        name: 'Michael Brown',
+        email: 'michael.brown@example.com',
+        password: 'p@ssw0rd',
+        address: 'Tokyo',
+        isadmin: true,
+      }
+    ];
+    
 
   
  
