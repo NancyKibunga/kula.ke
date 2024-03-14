@@ -1,21 +1,19 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 // cart context that provides a value 
-const CartContext = createContext(null)
+const CartContext = createContext(null);
 // default cart initial state
-const CART_KEY ='cart';
+const CART_KEY = 'cart';
 const EMPTY_CART = {
-    items:[],
-    totalPrice:0,
-    totalCount:0,
+  items: [],
+  totalPrice: 0,
+  totalCount: 0,
 };
 
 
 // cart provider provides the value of a context for its children
-export default function CartProvider({children}) {
-    const initCart = getCartFromLocalStorage ();
-
-//set cart items states
+export default function CartProvider({ children }) {
+    const initCart = getCartFromLocalStorage();
     const [cartItems, setCartItems] = useState(initCart.items);
     const [totalPrice, setTotalPrice] = useState(initCart.totalPrice);
     const [totalCount, setTotalCount] = useState(initCart.totalCount);
@@ -34,16 +32,16 @@ export default function CartProvider({children}) {
     localStorage.setItem(
         CART_KEY, 
         JSON.stringify({
-        items: cartItems,
-        totalPrice,
-        totalCount,
+        items: cartItems || [],
+        totalPrice: totalPrice|| 0,
+        totalCount: totalCount || 0,
     })
     );
 
     }}, [cartItems, totalPrice, totalCount]);
 
-// checks whether ther is anything in the cart initial state from local storage and returns that, else returns an empty cart
-    function getCartFromLocalStorage() {
+// checks whether ther is anything in the cart initial state from local storage and returns that, else returns an empty cart    
+function getCartFromLocalStorage() {
         const storedCart = localStorage.getItem(CART_KEY);
         return storedCart ? JSON.parse(storedCart) : EMPTY_CART;
     }

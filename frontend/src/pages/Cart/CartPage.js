@@ -69,7 +69,7 @@ export default function CartPage() {
             </div>       
             </div>
 
-            <Link to="/checkout">Proceed to Checkout</Link>
+            <Link to="/checkout"> Proceed to Checkout</Link>
         </div>
     </div>
   )}

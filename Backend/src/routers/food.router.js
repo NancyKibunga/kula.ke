@@ -25,7 +25,6 @@ router.get('/tag/:tag', (req, res) => {
     const foods = sample_foods.filter(item => item.tags?.includes(tag));
     res.send(foods);
   });
-
 // finding foods based on the foodId
 router.get('/:foodId', (req, res) => {
     const { foodId } = req.params;
