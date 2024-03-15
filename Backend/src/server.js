@@ -1,7 +1,15 @@
+// configure .env to ensure the database uri is not exposed 
+import dotenv from 'dotenv';
+dotenv.config(); 
+
 import express from  'express';
 import cors from 'cors';
 import foodRouter from './routers/food.router.js';
 import userRouter from './routers/user.router.js';
+
+// calling the dbconnect function 
+import { dbconnect } from './Config/database.config.js';
+dbconnect();
 
 
 // create the express app and call it
