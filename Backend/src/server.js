@@ -6,6 +6,7 @@ import express from  'express';
 import cors from 'cors';
 import foodRouter from './routers/food.router.js';
 import userRouter from './routers/user.router.js';
+import orderRouter from './routers/order.router.js';
 
 // calling the dbconnect function 
 import { dbconnect } from './Config/database.config.js';
@@ -27,8 +28,11 @@ app.use(
     
 // the address for the foodrouter
     app.use('/api/foods', foodRouter);
-// lpgin router address
+// login router address
     app.use('/api/users', userRouter);
+// orders router address
+    app.use('/api/orders', orderRouter);
+
 
 //backend address
     const PORT = 5000;
