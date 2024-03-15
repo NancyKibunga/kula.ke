@@ -3,11 +3,12 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
   
   .details {
     width: 25rem;
+    height: 80%;
   }
   
   .details form {
