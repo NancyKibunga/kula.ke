@@ -3,8 +3,8 @@ import { useState, createContext, useContext } from 'react';
 const LoadingContext = createContext({});
 // creating the loading provider 
 export const LoadingProvider = ({ children }) => {
-    // by default it shows the loading
-  const [isLoading, setIsLoading] = useState(true);
+    // by default it doesnt show the loading
+  const [isLoading, setIsLoading] = useState(false);
 
   const showLoading = () => setIsLoading(true);
   const hideLoading = () => setIsLoading(false);
