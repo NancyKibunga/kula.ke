@@ -13,6 +13,14 @@ export const login = async (email, password) => {
   return data;
 };
 
+// register function - gets the data from register 
+export const register = async registerData => {
+  const { data } = await axios.post('api/users/register', registerData);
+  localStorage.setItem('user', JSON.stringify(data));
+  return data;
+};
+
+
 // logout function
 export const logout = () => {
   localStorage.removeItem('user');

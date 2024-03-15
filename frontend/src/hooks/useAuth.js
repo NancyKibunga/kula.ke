@@ -21,6 +21,17 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  // register function
+  const register = async data => {
+    try {
+      const user = await userService.register(data);
+      setUser(user);
+      toast.success('Registered Successfully');
+    } catch (err) {
+      toast.error(err.response.data);
+    }
+  };
+
 //logout function to remove the user from the local storage
   const logout = () => {
     userService.logout();
@@ -30,7 +41,7 @@ export const AuthProvider = ({ children }) => {
 
 // returning the authcontect provider by parsing the values and the children
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, register}}>
       {children}
     </AuthContext.Provider>
   );

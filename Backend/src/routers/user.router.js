@@ -8,6 +8,7 @@ import { BAD_REQUEST } from '../constants/httpStatus.js';
 import handler from 'express-async-handler';
 import { UserModel } from '../models/user.model.js';
 import bcrypt from 'bcryptjs';
+const PASSWORD_HASH_SALT_ROUNDS = 10;
 
 // checks whether the user is available by matching the email and password from the database
 router.post(
@@ -22,6 +23,33 @@ router.post(
   }
 // for an invalid user or details do not match
   res.status(BAD_REQUEST).send('Invalid Username or Password!');
+})
+);
+
+// cretaing the register api 
+router.post(
+  '/register',
+  handler(async (req, res) => {
+    // get the user inputs from the request and check whether email already exists
+    const { name, email, password, address } = req.body;
+    const user = await UserModel.findOne({ email });
+// checks if user already exists and outputs bad request directing the user to log in
+if (user) {
+  res.status(BAD_REQUEST).send('User already exists, please login!');
+  return;
+}
+// hash the user password if user does not exist
+const hashedPassword = await bcrypt.hash(password, PASSWORD_HASH_SALT_ROUNDS);
+// create a new user object
+const newUser = {
+  name,
+  email: email.toLowerCase(),
+  password: hashedPassword,
+  address,
+};
+// create new user by parsing new user object
+const result = await UserModel.create(newUser);
+res.send(generateTokenResponse(result));
 })
 );
 
