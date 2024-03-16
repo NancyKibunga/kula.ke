@@ -25,3 +25,15 @@ export const register = async registerData => {
 export const logout = () => {
   localStorage.removeItem('user');
 };
+
+// updates user profile  
+  export const updateProfile = async user => {
+    const { data } = await axios.put('/api/users/updateProfile', user);
+    localStorage.setItem('user', JSON.stringify(data));
+    return data;
+};
+
+// updates user password
+export const changePassword = async passwords => {
+  await axios.put('/api/users/changePassword', passwords);
+};

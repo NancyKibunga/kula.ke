@@ -9,6 +9,7 @@ import AuthRoute from './components/AuthRoute/AuthRoute';
 import CheckoutPage from './pages/Checkout/CheckoutPage';
 import PaymentPage from './pages/Payment/PaymentPage';
 import OrderTrackPage from './pages/OrderTrack/OrderTrackPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 
 export default function AppRoutes() {
   return (
@@ -39,6 +40,15 @@ export default function AppRoutes() {
         element={
           <AuthRoute>
             <OrderTrackPage />
+          </AuthRoute>
+        }
+      />
+{/* profile page update */}
+<Route
+        path="/profile"
+        element={
+          <AuthRoute>
+            <ProfilePage />
           </AuthRoute>
         }
       />
