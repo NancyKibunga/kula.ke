@@ -80,6 +80,29 @@ router.get(
     else res.status(BAD_REQUEST).send();
   })
 );
+
+// gets the values and sends them to the client side
+router.get('/allstatus', (req, res) => {
+  const allStatus = Object.values(OrderStatus);
+  res.send(allStatus);
+});
+
+// the status is optional, if there is no status then it loads all orders
+router.get('/:status?',
+  handler(async (req, res) => {
+    // request the status
+    const status = req.params.status;
+    const user = await UserModel.findById(req.user.id);
+    const filter = {};
+// if user is admin, shows all orders, if not admin then filter checks orders for the current user
+    if (!user.isAdmin) filter.user = user._id;
+    if (status) filter.status = status;
+// finding orders based on the filters and sends the orders to the users
+    const orders = await OrderModel.find(filter).sort('-createdAt');
+    res.send(orders);
+  })
+);
+
 const getNewOrderForCurrentUser = async req =>
   await OrderModel.findOne({ user: req.user.id, status: OrderStatus.NEW });
 

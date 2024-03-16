@@ -10,6 +10,7 @@ import CheckoutPage from './pages/Checkout/CheckoutPage';
 import PaymentPage from './pages/Payment/PaymentPage';
 import OrderTrackPage from './pages/OrderTrack/OrderTrackPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
+import OrdersPage from './pages/Orders/OrdersPage';
 
 export default function AppRoutes() {
   return (
@@ -51,7 +52,18 @@ export default function AppRoutes() {
             <ProfilePage />
           </AuthRoute>
         }
-      />
-   </Routes>
-  );
-}
+        />
+        <Route
+          path="/orders/:filter?"
+          element={
+            <AuthRoute>
+              <OrdersPage />
+            </AuthRoute>
+          }
+        />
+      </Routes>
+    );
+  }
+
+
+
