@@ -26,4 +26,35 @@ router.post(
   })
 );
 
+// getting the new order and creating a function for it 
+// put for updating existing data
+router.put(
+  '/pay',
+  handler(async (req, res) => {
+    const { paymentId } = req.body;
+    const order = await getNewOrderForCurrentUser(req);
+    // if order is not available
+    if (!order) {
+      res.status(BAD_REQUEST).send('Order Not Found!');
+      return;
+    }
+// if order is available
+    order.paymentId = paymentId;
+    order.status = OrderStatus.PAYED;
+    await order.save();
+
+    res.send(order._id);
+  })
+);
+
+router.get(
+  '/newOrderForCurrentUser',
+  handler(async (req, res) => {
+    const order = await getNewOrderForCurrentUser(req);
+    if (order) res.send(order);
+    else res.status(BAD_REQUEST).send();
+  })
+);
+const getNewOrderForCurrentUser = async req =>
+  await OrderModel.findOne({ user: req.user.id, status: OrderStatus.NEW });
 export default router;

@@ -82,7 +82,14 @@ const addToCart = food => {
     }
 }
 
-
+// clear cart function after payment has been approved
+const clearCart = () => {
+    localStorage.removeItem(CART_KEY);
+    const { items, totalPrice, totalCount } = EMPTY_CART;
+    setCartItems(items);
+    setTotalPrice(totalPrice);
+    setTotalCount(totalCount);
+  };
 
 
 // returns the cart and all its functions
@@ -90,6 +97,7 @@ const addToCart = food => {
   ,removeFromCart,
    changeQuantity, 
    addToCart,
+   clearCart,
 
  }}
   > {children}
