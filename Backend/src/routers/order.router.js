@@ -4,6 +4,8 @@ import auth from '../middleware/auth.mid.js';
 import { BAD_REQUEST } from '../constants/httpStatus.js';
 import { OrderModel } from '../models/order.model.js';
 import { OrderStatus } from '../constants/orderStatus.js';
+import { UserModel } from '../models/user.model.js';
+
 
 const router = Router();
 router.use(auth);
@@ -46,7 +48,30 @@ router.put(
     res.send(order._id);
   })
 );
+// get the order id from request params and get the user from the database using the user id
+router.get(
+  '/track/:orderId',
+  handler(async (req, res) => {
+    const { orderId } = req.params;
+    const user = await UserModel.findById(req.user.id);
 
+    const filter = {
+      _id: orderId,
+    };
+// for admin users to enable them to view all orders
+    if (!user.isAdmin) {
+      filter.user = user._id;
+    }
+
+    const order = await OrderModel.findOne(filter);
+
+    if (!order) return res.send(UNAUTHORIZED);
+
+    return res.send(order);
+  })
+);
+
+// new order for current user
 router.get(
   '/newOrderForCurrentUser',
   handler(async (req, res) => {
@@ -57,4 +82,6 @@ router.get(
 );
 const getNewOrderForCurrentUser = async req =>
   await OrderModel.findOne({ user: req.user.id, status: OrderStatus.NEW });
-export default router;
+
+
+  export default router;

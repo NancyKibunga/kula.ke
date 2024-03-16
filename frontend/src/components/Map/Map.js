@@ -9,6 +9,8 @@ import {
   useMapEvents,
 } from 'react-leaflet';
 import { toast } from 'react-toastify';
+// import everything from the leaflet package
+import * as L from 'leaflet';
 
 // defined properties and the evnt that sends the map data to the checkout page
 export default function Map({ readonly, location, onChange }) {
@@ -64,6 +66,14 @@ function FindButtonAndMarker({ readonly, location, onChange }) {
     },
   });
 
+// define the icon
+const markerIcon = new L.Icon({
+  iconUrl: '/marker-icon-2x.png',
+  iconSize: [25, 41],
+  iconAnchor: [12.5, 41],
+  popupAnchor: [0, -41],
+});
+
   return (
     <>
     {/* verify if its not readonly mode then it shows the find my location button */}
@@ -86,6 +96,7 @@ function FindButtonAndMarker({ readonly, location, onChange }) {
           }}
           position={position}
           draggable={!readonly}
+          icon={markerIcon}
         >
           <Popup>Shipping Location</Popup>
         </Marker>
